@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 ("react-router-dom");
-import useCountdownTimer from "../features/game/timer/useTimer";
+import useCountdownTimer from "../features/game/header/timer/useTimer";
 
 export default function Game() {
 	const timer = useCountdownTimer(3, showResult);
