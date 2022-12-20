@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../features/game/header/Header";
 ("react-router-dom");
 import useCountdownTimer from "../features/game/header/timer/useTimer";
 
@@ -8,8 +9,12 @@ export default function Game() {
 	const navigate = useNavigate();
 
 	function showResult() {
-		navigate("/result");
+		// navigate("/result");
 	}
 
-	return <div>{timer}</div>;
+	return (
+		<div>
+			<Header remainTime={timer} />
+		</div>
+	);
 }
