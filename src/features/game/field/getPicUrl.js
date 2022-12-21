@@ -1,7 +1,16 @@
 import axios from "axios";
 
-const baseUrl = "https://dog.ceo/api/breeds/image/random";
-
-export default function getPicUrl() {
-	axios.get(baseUrl).then((res) => console.log(res));
+export function getDogPicUrl(baseUrl, number, setUrls) {
+	for (let i = 0; i <= number; i++) {
+		axios
+			.get(baseUrl)
+			.then((res) => setUrls((prevState) => [...prevState, res.data.message]));
+	}
+}
+export function getCatPicUrl(baseUrl, number, setUrls) {
+	for (let i = 0; i <= number; i++) {
+		axios
+			.get(baseUrl)
+			.then((res) => setUrls((prevState) => [...prevState, res.data[0].url]));
+	}
 }
