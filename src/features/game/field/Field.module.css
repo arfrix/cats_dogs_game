@@ -1,0 +1,9 @@
+.img--visible {
+	width: 100px;
+	height: 100px;
+}
+.img--hidden {
+	width: 100px;
+	height: 100px;
+	visibility: hidden;
+}
