@@ -17,6 +17,10 @@ export default function Field() {
 		setter({ urls: [...pics], isMixed: true });
 	}
 
+	function onClick(type) {
+		console.log(type);
+	}
+
 	function onLoad() {
 		let loadedPicNumbers = 0;
 		function loadedPicCounter() {
@@ -41,13 +45,14 @@ export default function Field() {
 	return (
 		<div>
 			{picsList.isMixed &&
-				picsList.urls.map((url) => (
+				picsList.urls.map((pic) => (
 					<img
 						className={
 							isAllPicsLoaded ? styles["img--visible"] : styles["img--hidden"]
 						}
-						src={url}
+						src={pic.url}
 						onLoad={loadedPicCounter}
+						onClick={() => onClick(pic.type)}
 					/>
 				))}
 		</div>
