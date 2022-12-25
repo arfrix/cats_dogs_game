@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDogPicUrl, getCatPicUrl } from "./getPicUrl";
+import { useDispatch } from "react-redux";
+import { incrementScore } from "../gameSlice";
 import styles from "./Field.module.css";
 
 export default function Field() {
@@ -7,6 +9,7 @@ export default function Field() {
 	const catAPIBaseUrl = "https://api.thecatapi.com/v1/images/search";
 	const [picsList, setPicsList] = useState({ urls: [], isMixed: false });
 	const [isAllPicsLoaded, setIsAllPicsLoaded] = useState(false);
+	const dispatch = useDispatch();
 
 	function picMixer(arrayState, setter) {
 		const pics = [...arrayState];
@@ -18,7 +21,7 @@ export default function Field() {
 	}
 
 	function onClick(type) {
-		console.log(type);
+		dispatch(incrementScore());
 	}
 
 	function onLoad() {
