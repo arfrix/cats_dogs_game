@@ -7,7 +7,7 @@ export default function GameTarget() {
 	const gameTarget = useSelector((state) => state.game.gameTarget);
 
 	useEffect(() => {
-		const target = Math.round(Math.random()) ? "Cat" : "Dog";
+		const target = Math.round(Math.random()) ? "cat" : "dog";
 		dispatch(setGameTarget(target));
 	}, []);
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getDogPicUrl, getCatPicUrl } from "./getPicUrl";
-import { useDispatch } from "react-redux";
-import { incrementScore } from "../gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { decreaseScore, increaseScore } from "../gameSlice";
 import styles from "./Field.module.css";
 
 export default function Field() {
@@ -10,6 +10,7 @@ export default function Field() {
 	const [picsList, setPicsList] = useState({ urls: [], isMixed: false });
 	const [isAllPicsLoaded, setIsAllPicsLoaded] = useState(false);
 	const dispatch = useDispatch();
+	const gameTarget = useSelector((state) => state.game.gameTarget);
 
 	function picMixer(arrayState, setter) {
 		const pics = [...arrayState];
@@ -21,7 +22,11 @@ export default function Field() {
 	}
 
 	function onClick(type) {
-		dispatch(incrementScore());
+		if (type === gameTarget) {
+			dispatch(increaseScore());
+		} else {
+			dispatch(decreaseScore());
+		}
 	}
 
 	function onLoad() {

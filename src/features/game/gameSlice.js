@@ -9,8 +9,11 @@ export const gameSlice = createSlice({
 	name: "game",
 	initialState,
 	reducers: {
-		incrementScore: (state) => {
+		increaseScore: (state) => {
 			state.score += 1;
+		},
+		decreaseScore: (state) => {
+			state.score -= 1;
 		},
 		setGameTarget: (state, action) => {
 			state.gameTarget = action.payload;
@@ -18,6 +21,7 @@ export const gameSlice = createSlice({
 	},
 });
 
-export const { incrementScore, setGameTarget } = gameSlice.actions;
+export const { increaseScore, decreaseScore, setGameTarget } =
+	gameSlice.actions;
 
 export default gameSlice.reducer;
