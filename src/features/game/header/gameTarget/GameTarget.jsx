@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setGameTarget } from "../../gameSlice";
 
 export default function GameTarget() {
-	const [targetAnimal, setTargetAnimal] = useState("");
 	const dispatch = useDispatch();
+	const gameTarget = useSelector((state) => state.game.gameTarget);
 
 	useEffect(() => {
-		const target = Math.round(Math.random()) ? "Cats" : "Dogs";
+		const target = Math.round(Math.random()) ? "Cat" : "Dog";
 		dispatch(setGameTarget(target));
 	}, []);
 
-	return <div>Please select {targetAnimal}</div>;
+	return <div>Please select {gameTarget}</div>;
 }
