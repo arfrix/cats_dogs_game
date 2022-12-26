@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getDogPicUrl, getCatPicUrl } from "./getPicUrl";
+import { getDogPicUrl, getCatPicUrl, apiHandler } from "./getPicUrl";
 import { useDispatch, useSelector } from "react-redux";
 import { decreaseScore, increaseScore, setPicLoading } from "../gameSlice";
 import styles from "./Field.module.css";
@@ -41,9 +41,9 @@ export default function Field() {
 
 	function getPics() {
 		dispatch(setPicLoading(true));
-		setPicsList({ urls: [], isMixed: false });
-		getDogPicUrl(dogAPIBaseUrl, 7, setPicsList);
-		getCatPicUrl(catAPIBaseUrl, 2, setPicsList);
+		const handler = apiHandler();
+		handler.getDogPicUrl(dogAPIBaseUrl, 7, setPicsList);
+		handler.getCatPicUrl(catAPIBaseUrl, 2, setPicsList);
 	}
 
 	useEffect(() => {
